@@ -12,7 +12,7 @@ public class HomeScreen {
 
     public static void main(String[] args) {
 
-//        mainScreen();
+        mainScreen();
 
     }
     static Scanner scanner = new Scanner(System.in);
@@ -21,10 +21,10 @@ public class HomeScreen {
     static LocalTime currentTime = LocalTime.now().withNano(0);
 
     public static void mainScreen() {
-        System.out.println("D) Add Deposit");
-        System.out.println("P) Make Payment (Debit)");
-        System.out.println("L) Ledger");
-        System.out.println("X) Exit");
+        System.out.println("D) Add Deposit\n"+
+                "P) Make Payment\n" +
+                "L) Ledger\n" +
+                "X) Exit");
         String answer = scanner.nextLine();
 
         if(answer.equalsIgnoreCase("d")) {
@@ -39,7 +39,8 @@ public class HomeScreen {
     }
 
     public static void addDeposit() {
-        try{System.out.println("Add a description for this transaction:");
+        try{
+            System.out.println("Add a description for this transaction:");
             String addDescription = scanner.nextLine();
             System.out.println("Vendor:");
             String addVendor = scanner.nextLine();

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class LedgerScreen {
@@ -15,10 +16,10 @@ public class LedgerScreen {
 
     static Scanner scanner = new Scanner(System.in);
     public static void ledgerScreen(){
-        System.out.println("A) All");
-        System.out.println("D) Deposits");
-        System.out.println("P) Payments");
-        System.out.println("R) Reports");
+        System.out.println("A) All\n" +
+                "D) Deposits\n" +
+                "P) Payments\n" +
+                "R) Reports");
         System.out.println("REMINDER TO SELF YOU NEED TO DISPLAY BACKWARDS");
 
         String answer = scanner.nextLine();
@@ -29,7 +30,7 @@ public class LedgerScreen {
         } else if (answer.equalsIgnoreCase("p")) {
             viewPayments();
         } else if (answer.equalsIgnoreCase("r")) {
-
+            Reports.reportsScreen();
         } else if (answer.equalsIgnoreCase("h")) {
             HomeScreen.mainScreen();
         }
@@ -61,7 +62,7 @@ public class LedgerScreen {
             String[] data = input.split("\\|");
             double tempDouble = Double.parseDouble(data[4]);
             if(tempDouble > 0) {
-                System.out.printf("%s %s %s %s %.2f \n", data[0], data[1], data[2], data[3], Double.parseDouble(data[4]));
+                System.out.printf("%s %s %s %s %.2f \n", data[0], data[1], data[2], data[3], tempDouble);
             }
 
         }
@@ -82,7 +83,7 @@ public class LedgerScreen {
                 String[] data = input.split("\\|");
                 double tempDouble = Double.parseDouble(data[4]);
                 if(tempDouble <= 0) {
-                    System.out.printf("%s %s %s %s %.2f \n", data[0], data[1], data[2], data[3], Double.parseDouble(data[4]));
+                    System.out.printf("%s %s %s %s %.2f \n", data[0], data[1], data[2], data[3], tempDouble);
                 }
 
             }
