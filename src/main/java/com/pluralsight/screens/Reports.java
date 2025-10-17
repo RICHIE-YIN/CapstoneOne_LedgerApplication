@@ -4,6 +4,7 @@ import com.pluralsight.objects.Ledger;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Reports {
@@ -13,7 +14,7 @@ public class Reports {
 //        yearToDate();
 //        previousMonth();
 //        previousYear();
-        searchByVendor("test1");
+//        searchByVendor("test2");
 
     }
 
@@ -69,7 +70,9 @@ public class Reports {
             int month = Integer.parseInt(dateSplit[1]);
             if(year == currentYear && month == currentMonth) {
                 Ledger filteredList = new Ledger(data[2], data[3], Double.parseDouble(data[4]));
-                System.out.println(filteredList);
+                filteredList.setDate(LocalDate.parse(data[0]));
+                filteredList.setTime(LocalTime.parse(data[1]));
+                System.out.printf("%s %s %s %s %.2f \n", filteredList.getDate(), filteredList.getTime(), filteredList.getDescription(), filteredList.getVendor(), filteredList.getAmount());
             }
 
 
@@ -79,6 +82,7 @@ public class Reports {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        HomeScreen.mainScreen();
     }
 
     public static void previousMonth() {
@@ -99,7 +103,9 @@ public class Reports {
                 int month = Integer.parseInt(dateSplit[1]);
                 if(year == currentYear && month == currentMonth - 1) {
                     Ledger filteredList = new Ledger(data[2], data[3], Double.parseDouble(data[4]));
-                    System.out.println(filteredList);
+                    filteredList.setDate(LocalDate.parse(data[0]));
+                    filteredList.setTime(LocalTime.parse(data[1]));
+                    System.out.printf("%s %s %s %s %.2f \n", filteredList.getDate(), filteredList.getTime(), filteredList.getDescription(), filteredList.getVendor(), filteredList.getAmount());
                 }
 
 
@@ -109,6 +115,7 @@ public class Reports {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        HomeScreen.mainScreen();
     }
 
     public static void yearToDate() {
@@ -128,7 +135,9 @@ public class Reports {
                 int month = Integer.parseInt(dateSplit[1]);
                 if(year == currentYear) {
                     Ledger filteredList = new Ledger(data[2], data[3], Double.parseDouble(data[4]));
-                    System.out.println(filteredList);
+                    filteredList.setDate(LocalDate.parse(data[0]));
+                    filteredList.setTime(LocalTime.parse(data[1]));
+                    System.out.printf("%s %s %s %s %.2f \n", filteredList.getDate(), filteredList.getTime(), filteredList.getDescription(), filteredList.getVendor(), filteredList.getAmount());
                 }
 
 
@@ -138,6 +147,7 @@ public class Reports {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        HomeScreen.mainScreen();
     }
 
     public static void previousYear() {
@@ -157,7 +167,9 @@ public class Reports {
                 int month = Integer.parseInt(dateSplit[1]);
                 if(year == currentYear - 1) {
                     Ledger filteredList = new Ledger(data[2], data[3], Double.parseDouble(data[4]));
-                    System.out.println(filteredList);
+                    filteredList.setDate(LocalDate.parse(data[0]));
+                    filteredList.setTime(LocalTime.parse(data[1]));
+                    System.out.printf("%s %s %s %s %.2f \n", filteredList.getDate(), filteredList.getTime(), filteredList.getDescription(), filteredList.getVendor(), filteredList.getAmount());
                 }
 
 
@@ -167,6 +179,7 @@ public class Reports {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        HomeScreen.mainScreen();
     }
 
     public static void searchByVendor(String vendorName) {
@@ -181,6 +194,8 @@ public class Reports {
             String vendor = data[3];
             if(vendor.equalsIgnoreCase(vendorName)) {
                 Ledger filteredList = new Ledger(data[2], data[3], Double.parseDouble(data[4]));
+                filteredList.setDate(LocalDate.parse(data[0]));
+                filteredList.setTime(LocalTime.parse(data[1]));
                 System.out.printf("%s %s %s %s %.2f \n", filteredList.getDate(), filteredList.getTime(), filteredList.getDescription(), filteredList.getVendor(), filteredList.getAmount());
             }
         }
@@ -189,5 +204,6 @@ public class Reports {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        HomeScreen.mainScreen();
     }
 }

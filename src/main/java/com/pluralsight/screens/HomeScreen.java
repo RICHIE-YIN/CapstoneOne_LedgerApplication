@@ -12,7 +12,7 @@ public class HomeScreen {
 
     public static void main(String[] args) {
 
-        mainScreen();
+//        mainScreen();
 
     }
     static Scanner scanner = new Scanner(System.in);
